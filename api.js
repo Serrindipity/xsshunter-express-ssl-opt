@@ -34,6 +34,9 @@ var sessions_settings_object = {
     }
 }
 function session_wrapper_function(req, res, next) {
+    if (process.env.BEHIND_PROXY === 'true') {
+        req.connection.proxySecure = true;
+    }
     return sessions_middleware(req, res, next);
 }
 

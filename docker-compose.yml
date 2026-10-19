@@ -8,9 +8,10 @@ services:
       # the IP of the server running this service. 
       # SSL will automatically be set up and
       #  renewed with LetsEncrypt.
-      - HOSTNAME=your.host.name
+      - HOSTNAME=cdn.itsjq.me
+      - BEHIND_PROXY=true
       # [REQUIRED] Email for SSL
-      - SSL_CONTACT_EMAIL=YourEmail@gmail.com
+      - SSL_CONTACT_EMAIL=spam.useless.exe@gmail.com
       # Maximum XSS callback payload size
       # This includes the webpage screenshot, DOM HTML,
       # page text, and other metadata. Note that if the
@@ -23,7 +24,7 @@ services:
       - CONTROL_PANEL_ENABLED=true
       # Whether or not to enable email notifications via
       # SMTP for XSS payload fires.
-      - SMTP_EMAIL_NOTIFICATIONS_ENABLED=true
+      - SMTP_EMAIL_NOTIFICATIONS_ENABLED=false
       - SMTP_HOST=smtp.gmail.com
       - SMTP_PORT=465
       - SMTP_USE_TLS=true
@@ -42,8 +43,7 @@ services:
       - DATABASE_HOST=postgresdb
       - NODE_ENV=production
     ports:
-      - "80:80"
-      - "443:443"
+      - "80:8080"
     volumes:
       # Stores the SSL/TLS certificates and keys
       # in the "ssldata" directory.
